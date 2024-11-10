@@ -21,6 +21,13 @@ Circle::Circle(std::list<int>center, int rad, BWColor c)
     , color(c.getColor())
 {}
 
+Circle::Circle(std::list<int>center, int rad, RGBColor c)
+    : centerX(*center.begin())
+    , centerY(center.back())
+    , r(rad)
+    , color(c.getColor())
+{}
+
 void Circle::draw(Matrix& mat) {
     int r2 = r * r;  // Pre-calculate r squared
     int height = mat.getRows();
@@ -41,7 +48,7 @@ void Circle::draw(Matrix& mat) {
         // Fill the horizontal line
         for (int x = startX; x <= endX; ++x) {
             for (size_t ch = 0; ch < mat.getChannels(); ++ch) {
-                mat.at(y, x, ch) = *std::next(color.begin());
+                mat.at(y, x, ch) = *std::next(color.begin(), ch);
             }
         }
     }

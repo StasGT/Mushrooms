@@ -33,8 +33,8 @@ Rectangle::Rectangle(std::list<int>left_top, int t_width, int t_height, RGBColor
 void Rectangle::draw(Matrix& mat) {
     int bm_y = top_y + height;
     int right_x = left_x + width;
-    for (int y = top_y; y <= bm_y; ++y) {
-        for (int x = left_x; x <= right_x; ++x) {
+    for (int y = top_y; y <= bm_y && y < mat.getRows(); ++y) {
+        for (int x = left_x; x <= right_x && x < mat.getCols(); ++x) {
             for (size_t ch = 0; ch < mat.getChannels(); ++ch) {
                 mat.at(y, x, ch) = *std::next(color.begin(), ch);
             }

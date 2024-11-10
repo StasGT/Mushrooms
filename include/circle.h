@@ -1,6 +1,7 @@
 #pragma once
 #include "bw_matrix.h"
 #include "bw_color.h"
+#include "rgbcolor.h"
 #include <list>
 
 
@@ -9,6 +10,7 @@ public:
     Circle();
     Circle(Circle& obj);
     Circle(std::list<int>center, int rad, BWColor c);
+    Circle(std::list<int>center, int rad, RGBColor c);
     void draw(Matrix& mat);
 
 private:

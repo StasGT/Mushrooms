@@ -21,11 +21,18 @@ Triangle::Triangle(std::list<int>a, std::list<int> b, std::list<int> c, BWColor&
     , m_color(color.getColor())
 {}
 
+Triangle::Triangle(std::list<int>a, std::list<int> b, std::list<int> c, RGBColor& color)
+    : m_a(a)
+    , m_b(b)
+    , m_c(c)
+    , m_color(color.getColor())
+{}
+
 void Triangle::draw(Matrix& mat) {
     // Convert lists to x,y coordinates
-    int y1 = *m_a.begin(), x1 = *std::next(m_a.begin());
-    int y2 = *m_b.begin(), x2 = *std::next(m_b.begin());
-    int y3 = *m_c.begin(), x3 = *std::next(m_c.begin());
+    int x1 = *m_a.begin(), y1 = *std::next(m_a.begin());
+    int x2 = *m_b.begin(), y2 = *std::next(m_b.begin());
+    int x3 = *m_c.begin(), y3 = *std::next(m_c.begin());
 
     // Bounds checking for coordinates
     int width = mat.getCols();
@@ -90,7 +97,7 @@ void Triangle::draw(Matrix& mat) {
 
                 for (int x = startX; x <= endX; x++) {
                     for (size_t ch = 0; ch < mat.getChannels(); ++ch) {
-                        mat.at(y, x, ch) = *std::next(m_color.begin());
+                        mat.at(y, x, ch) = *std::next(m_color.begin(), ch);
                     }
                 }
             }
