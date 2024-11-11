@@ -17,6 +17,10 @@ public:
     cv::Mat toOpenCV() const override;
     bool readImage(const std::string& path) override;
 
+    void draw(Circle& obj);
+    void draw(Triangle& obj);
+    void draw(Rectangle& obj);
+
     BWMatrix toBW() const;
 
     RGBMatrix add(int val) const;

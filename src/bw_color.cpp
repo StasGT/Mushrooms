@@ -3,8 +3,11 @@
 #include <iostream>
 
 BWColor::BWColor()
-	: m_color(0) 
+	: m_color({ 0 })
 {}
-BWColor::BWColor(int color)
-	: m_color(color) 
-{}
+BWColor::BWColor(int color) {
+	m_color.assign({ color });
+}
+void BWColor::changeColor(int color) {
+	m_color.assign({ color });
+}

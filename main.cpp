@@ -1,13 +1,16 @@
-#include "include/matrix.h"
+//#include "include/matrix.h"
 #include "include/rgb_matrix.h"
 #include "include/bw_matrix.h"
 #include "include/bw_color.h"
 #include "include/circle.h"
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <math.h>
-#include <list>
+#include "include/triangle.h"
+#include "include/rgbcolor.h"
+
+//#include <iostream>
+//#include <cstdlib>
+//#include <ctime>
+//#include <math.h>
+//#include <list>
 
 
 
@@ -49,39 +52,69 @@ void GenMatrix(Matrix& mat, int min = 0, int max = 255) {
 //}
 
 int main(){
-    BWMatrix m(200, 200);
-    BWColor bwcolor(255);
 
+    RGBMatrix rgb(1000, 1000, 0);
+    RGBColor rgbColor(102, 205, 255);
+    Rectangle sky({ 0, 0 }, 1000, 750, rgbColor);
+    //rgbColor.changeColor(0, 153, 0);
+    //Rectangle grass({ 0, 1500 }, 2000, 2000, rgbColor);
+    //rgbColor.changeColor(255, 255, 0);
+    //Circle sun({ 50, 50 }, 300, rgbColor);
+    //Triangle ray1({ 360, 50 }, { 550, 30 }, { 550, 70 }, rgbColor);
+    //Triangle ray2({ 270, 270 }, { 420, 360 }, { 390, 400 }, rgbColor);
+    //Triangle ray3({ 50, 360 }, { 30, 550 }, { 70, 550 }, rgbColor);
+    //rgbColor.changeColor(102, 51, 0);
+    //Rectangle wall({ 600, 900 }, 1000, 800, rgbColor);
+    //rgbColor.changeColor(0, 0, 0);
+    //Rectangle flue({ 1300, 550 }, 100, 200, rgbColor);
+    //rgbColor.changeColor(51, 0, 0);
+    //Triangle roof({ 560, 900 }, { 1100, 500 }, { 1640, 900 }, rgbColor);
+    //rgbColor.changeColor(204, 102, 0);
+    //Rectangle door({ 1400, 1350 }, 150, 300, rgbColor);
+    //rgbColor.changeColor(0, 0, 0);
+    //Circle knob({ 1535, 1500 }, 6, rgbColor);
+    //rgbColor.changeColor(102, 163, 255);
+    //Rectangle window1({ 700, 950 }, 300, 350, rgbColor);
+    //Rectangle window2({ 1200, 950 }, 300, 350, rgbColor);
+    //
+    rgb.draw(sky);
+    //rgb.draw(grass);
+    //rgb.draw(sun);
+    //rgb.draw(ray1);
+    //rgb.draw(ray2);
+    //rgb.draw(ray3);
+    //rgb.draw(wall);
+    //rgb.draw(flue);
+    //rgb.draw(roof);
+    //rgb.draw(door);
+    //rgb.draw(knob);
+    //rgb.draw(window1);
+    //rgb.draw(window2);
+    rgb.display();
+
+
+    //int bgColor = 255;
+    //int capColor = 179;
+    //int stipeColor = 128;
+    //int bottomColor = 52;
+    //BWMatrix bw(1000, 1000, 255);
+    //BWColor bwColor(capColor);
+    //Circle cap({ 500, 500 }, 350, bwColor);
+    //bwColor.changeColor(bgColor);
+    //Rectangle background({ 0, 350 }, 1000, 500, bwColor);
+    //Rectangle background2({ 400, 650 }, 200, 100, bwColor);
+    //bwColor.changeColor(stipeColor);
+    //Triangle stipe({ 500, 175 }, { 600, 750 }, { 400, 750 }, bwColor);
+    //bwColor.changeColor(capColor);
+    //Rectangle background3({ 400, 175 }, 200, 175, bwColor);
+    //bwColor.changeColor(bottomColor);
+    //Circle bottom({ 500, 750 }, 100, bwColor);
+    //
     //bw.draw(cap);
-    //std::list<int> a = { 100, 100 };
-    //std::list<int> b = { 100, 150 };
-    //std::list<int> c = { 150, 150 };
-    //GenTriangle(m, a, b, bwcolor);
-
-
-    Circle a(50, 100, 30, bwcolor);
-
-    //Circle(m, 150, 100, 30, bwcolor);
-    //Circle(m, 100, 50, 30, bwcolor);
-    //Circle(m, 100, 150, 30, bwcolor);
-    m.draw(a);
-    m.display();
-
+    //bw.draw(background);
+    //bw.draw(bottom);
+    //bw.draw(background2);
+    //bw.draw(stipe);
+    //bw.draw(background3);
+    //bw.display();
 }
-
-
-
-//int main() {
-//    RGBMatrix rgb;
-//    BWMatrix bw;
-//    bw.readImage("images/hse_bw.png");
-//    rgb.readImage("images/hse_rgb.png");
-//    bw.display();
-//    rgb.display();
-//
-//    BWMatrix inverted = bw.invert();
-//    inverted.display();
-//    BWMatrix newBW = rgb.toBW();
-//    newBW.display();
-//    return 0;
-//}

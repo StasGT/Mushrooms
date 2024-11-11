@@ -1,10 +1,31 @@
 #include "..\include\triangle.h"
 
-Triangle::Triangle(Matrix& mat) {
+Triangle::Triangle()
+    :m_a(0)
+    ,m_b(0)
+    ,m_c(0)
+    , m_color({ 0 })
+{}
+
+Triangle::Triangle(Triangle& obj) 
+    : m_a(obj.m_a)
+    , m_b(obj.m_b)
+    , m_c(obj.m_c)
+    , m_color(obj.m_color)
+{}
+
+Triangle::Triangle(std::list<int>a, std::list<int> b, std::list<int> c, BWColor& color) 
+    : m_a(a)
+    , m_b(b)
+    , m_c(c)
+    , m_color(color.getColor())
+{}
+
+void Triangle::draw(Matrix& mat) {
     // Convert lists to x,y coordinates
-    int x1 = *m_a.begin(), y1 = *std::next(m_a.begin());
-    int x2 = *m_b.begin(), y2 = *std::next(m_b.begin());
-    int x3 = *m_c.begin(), y3 = *std::next(m_c.begin());
+    int y1 = *m_a.begin(), x1 = *std::next(m_a.begin());
+    int y2 = *m_b.begin(), x2 = *std::next(m_b.begin());
+    int y3 = *m_c.begin(), x3 = *std::next(m_c.begin());
 
     // Bounds checking for coordinates
     int width = mat.getCols();
@@ -68,17 +89,11 @@ Triangle::Triangle(Matrix& mat) {
                 int endX = std::min(width - 1, xIntersections[i + 1]);
 
                 for (int x = startX; x <= endX; x++) {
-                    mat.at(x, y) = m_color;
+                    for (size_t ch = 0; ch < mat.getChannels(); ++ch) {
+                        mat.at(y, x, ch) = *std::next(m_color.begin());
+                    }
                 }
             }
         }
     }
 }
-
-
-Triangle::Triangle(std::list<int>a, std::list<int> b, std::list<int> c, BWColor& color) 
-    : m_a(a)
-    , m_b(b)
-    , m_c(c)
-    , m_color(color.getColor())
-{}

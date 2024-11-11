@@ -137,6 +137,8 @@
     <ClCompile Include="src\bw_matrix.cpp" />
     <ClCompile Include="src\circle.cpp" />
     <ClCompile Include="src\matrix.cpp" />
+    <ClCompile Include="src\rectangle.cpp" />
+    <ClCompile Include="src\rgbcolor.cpp" />
     <ClCompile Include="src\rgb_matrix.cpp" />
     <ClCompile Include="src\triangle.cpp" />
   </ItemGroup>
@@ -145,6 +147,8 @@
     <ClInclude Include="include\bw_matrix.h" />
     <ClInclude Include="include\circle.h" />
     <ClInclude Include="include\matrix.h" />
+    <ClInclude Include="include\rectangle.h" />
+    <ClInclude Include="include\rgbcolor.h" />
     <ClInclude Include="include\rgb_matrix.h" />
     <ClInclude Include="include\triangle.h" />
   </ItemGroup>

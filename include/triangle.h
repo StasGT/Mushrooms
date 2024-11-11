@@ -6,12 +6,14 @@
 class Triangle {
 
 public:
-    Triangle(Matrix& mat);
+    Triangle();
+    Triangle(Triangle& obj);
     Triangle(std::list<int>a, std::list<int> b, std::list<int> c, BWColor& color);
+    void draw(Matrix& mat);
 
 private:
     std::list<int>m_a;
     std::list<int>m_b;
     std::list<int>m_c;
-    int m_color;
+    std::list<int>m_color;
 };

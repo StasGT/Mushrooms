@@ -77,13 +77,14 @@ bool RGBMatrix::readImage(const std::string& path)
         return false;
 
     cv::Point p1(0, 0), p2(rgbImage.size()), p3(rgbImage.size() / 2);
-    int thickness = 2;
-    cv::line(rgbImage, p1, p2, cv::Scalar(255, 0, 0), thickness, cv::LINE_8);
-    cv::circle(rgbImage, p3, 63, cv::Scalar(0, 0, 255), -1);
 
     fromOpenCV(rgbImage);
     return true;
 }
+
+void RGBMatrix::draw(Circle& obj) { obj.draw(*this); }
+void RGBMatrix::draw(Triangle& obj) { obj.draw(*this); }
+void RGBMatrix::draw(Rectangle& obj) { obj.draw(*this); }
 
 RGBMatrix RGBMatrix::add(int val) const
 {

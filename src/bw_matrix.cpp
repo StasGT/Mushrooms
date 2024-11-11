@@ -66,6 +66,8 @@ bool BWMatrix::readImage(const std::string& path)
 }
 
 void BWMatrix::draw(Circle& obj) { obj.draw(*this); }
+void BWMatrix::draw(Triangle& obj) { obj.draw(*this); }
+void BWMatrix::draw(Rectangle& obj) { obj.draw(*this); }
 
 
 BWMatrix BWMatrix::add(int val) const

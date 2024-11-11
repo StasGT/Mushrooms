@@ -3,8 +3,12 @@
 
 #include "matrix.h"
 #include "circle.h"
+#include "triangle.h"
+#include "rectangle.h"
 
 class Circle;
+class Triangle;
+class Rectangle;
 
 class BWMatrix : public Matrix
 {
@@ -21,6 +25,8 @@ public:
 
 
     void draw(Circle& obj);
+    void draw(Triangle& obj);
+    void draw(Rectangle& obj);
 
 
     BWMatrix invert() const;
