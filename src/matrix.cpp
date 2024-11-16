@@ -1,5 +1,4 @@
 #include "../include/matrix.h"
-
 #include <iostream>
 #include <iomanip>
 
@@ -32,6 +31,12 @@ Matrix::Matrix(size_t rows, size_t cols, size_t channels, int initValue)
 void Matrix::display() const
 {
     cv::imshow("Display image", toOpenCV());
+    cv::waitKey(0);
+}
+
+void Matrix::save() const
+{
+    cv::imwrite("Mushrooms.jpg", toOpenCV());
     cv::waitKey(0);
 }
 

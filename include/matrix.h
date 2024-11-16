@@ -31,6 +31,7 @@ public:
     virtual cv::Mat toOpenCV() const = 0;
     virtual bool readImage(const std::string& path) = 0;
     void display() const;
+    void save() const;
 
     Matrix& operator=(const Matrix& mat);
 

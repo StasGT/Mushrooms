@@ -1,36 +1,47 @@
 #include "include/rgb_matrix.h"
 #include "include/bw_matrix.h"
-#include "include/bw_color.h"
+#include "include/color.h"
 #include "include/circle.h"
 #include "include/triangle.h"
-#include "include/rgbcolor.h"
+#include "include/rectangle.h"
+#include <chrono>
+#include <iostream>
+
+#include <opencv2/core.hpp>
+#include <opencv2/imgcodecs.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp> 
+
+using Time = std::chrono::high_resolution_clock;
+using ns = std::chrono::nanoseconds;
 
 int main(){
+    Time::time_point start = Time::now();
 
-    RGBMatrix rgb(1000, 1000, 0);
+    RGBMatrix rgb(2000, 2000, 0);
     RGBColor rgbColor(102, 205, 255);
-    Rectangle sky({ 0, 0 }, 1000, 750, rgbColor);
+    Rectangle sky({ 0, 0 }, 2000, 1500, rgbColor);
     rgbColor.changeColor(0, 153, 0);
-    Rectangle grass({ 0, 750 }, 1000, 1000, rgbColor);
+    Rectangle grass({ 0, 1500 }, 2000, 2000, rgbColor);
     rgbColor.changeColor(255, 255, 0);
     Circle sun({ 50, 50 }, 300, rgbColor);
     Triangle ray1({ 360, 50 }, { 550, 30 }, { 550, 70 }, rgbColor);
     Triangle ray2({ 270, 270 }, { 420, 360 }, { 390, 400 }, rgbColor);
     Triangle ray3({ 50, 360 }, { 30, 550 }, { 70, 550 }, rgbColor);
     rgbColor.changeColor(102, 51, 0);
-    Rectangle wall({ 300, 450 }, 500, 400, rgbColor);
+    Rectangle wall({ 600, 900 }, 1000, 800, rgbColor);
     rgbColor.changeColor(0, 0, 0);
-    Rectangle flue({ 650, 275 }, 50, 100, rgbColor);
+    Rectangle flue({ 1300, 550 }, 100, 200, rgbColor);
     rgbColor.changeColor(51, 0, 0);
-    Triangle roof({ 280, 450 }, { 550, 250 }, { 820, 450 }, rgbColor);
+    Triangle roof({ 560, 900 }, { 1100, 500 }, { 1640, 900 }, rgbColor);
     rgbColor.changeColor(204, 102, 0);
-    Rectangle door({ 700, 675 }, 75, 150, rgbColor);
+    Rectangle door({ 1400, 1350 }, 150, 300, rgbColor);
     rgbColor.changeColor(0, 0, 0);
-    Circle knob({ 767, 750 }, 3, rgbColor);
+    Circle knob({ 1535, 1500 }, 6, rgbColor);
     rgbColor.changeColor(102, 163, 255);
-    Rectangle window1({ 350, 475 }, 150, 175, rgbColor);
-    Rectangle window2({ 600, 475 }, 150, 175, rgbColor);
-    
+    Rectangle window1({ 700, 950 }, 300, 350, rgbColor);
+    Rectangle window2({ 1200, 950 }, 300, 350, rgbColor);
+
     rgb.draw(sky);
     rgb.draw(grass);
     rgb.draw(sun);
@@ -47,28 +58,34 @@ int main(){
     rgb.display();
 
 
-    //int bgColor = 255;
-    //int capColor = 179;
-    //int stipeColor = 128;
-    //int bottomColor = 52;
-    //BWMatrix bw(1000, 1000, 255);
-    //BWColor bwColor(capColor);
-    //Circle cap({ 500, 500 }, 350, bwColor);
-    //bwColor.changeColor(bgColor);
-    //Rectangle background({ 0, 350 }, 1000, 500, bwColor);
-    //Rectangle background2({ 400, 650 }, 200, 100, bwColor);
-    //bwColor.changeColor(stipeColor);
-    //Triangle stipe({ 500, 175 }, { 600, 750 }, { 400, 750 }, bwColor);
-    //bwColor.changeColor(capColor);
-    //Rectangle background3({ 400, 175 }, 200, 175, bwColor);
-    //bwColor.changeColor(bottomColor);
-    //Circle bottom({ 500, 750 }, 100, bwColor);
-    //
-    //bw.draw(cap);
-    //bw.draw(background);
-    //bw.draw(bottom);
-    //bw.draw(background2);
-    //bw.draw(stipe);
-    //bw.draw(background3);
-    //bw.display();
+//    int bgColor = 255;
+//    int capColor = 179;
+//    int stipeColor = 128;
+//    int bottomColor = 52;
+//    BWMatrix bw(2000, 2000, 255);
+//    BWColor bwColor(capColor);
+//    Circle cap({ 1000, 1000 }, 700, bwColor);
+//    bwColor.changeColor(bgColor);
+//    Rectangle background({ 0, 700 }, 2000, 1000, bwColor);
+//    Rectangle background2({ 800, 1300 }, 400, 200, bwColor);
+//    bwColor.changeColor(stipeColor);
+//    Triangle stipe({ 1000, 350 }, { 1200, 1500 }, { 800, 1500 }, bwColor);
+//    bwColor.changeColor(capColor);
+//    Rectangle background3({ 800, 350 }, 400, 350, bwColor);
+//    bwColor.changeColor(bottomColor);
+//    Circle bottom({ 1000, 1500 }, 200, bwColor);
+//
+//    bw.draw(cap);
+//    bw.draw(background);
+//    bw.draw(bottom);
+//    bw.draw(background2);
+//    bw.draw(stipe);
+//    bw.draw(background3);
+//    bw.display();
+
+    //rgb.save(); // for save image to mushroom.jpg
+
+    Time::time_point end = Time::now();
+    double duration = std::chrono::duration_cast<ns>(end - start).count() * 1e-6;
+    std::cout << "Execution time: " << duration << "ms" << std::endl;
 }

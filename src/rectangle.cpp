@@ -14,28 +14,41 @@ Rectangle::Rectangle(Rectangle& obj)
     , height(obj.height)
     , color(obj.color)
 {}
-Rectangle::Rectangle(std::list<int>left_top, int t_width, int t_height, BWColor color) 
-    : left_x(*left_top.begin())
-    , top_y(left_top.back())
+Rectangle::Rectangle(Point left_top, int t_width, int t_height, BWColor color) 
+    : left_x(left_top.x)
+    , top_y(left_top.y)
     , width(t_width)
     , height(t_height)
     , color(color.getColor())
 {}
 
-Rectangle::Rectangle(std::list<int>left_top, int t_width, int t_height, RGBColor color)
-    : left_x(*left_top.begin())
-    , top_y(left_top.back())
+Rectangle::Rectangle(Point left_top, int t_width, int t_height, RGBColor color)
+    : left_x(left_top.x)
+    , top_y(left_top.y)
     , width(t_width)
     , height(t_height)
     , color(color.getColor())
 {}
 
+
+    // Draw method
 void Rectangle::draw(Matrix& mat) {
     int bm_y = top_y + height;
     int right_x = left_x + width;
-    for (int y = top_y; y <= bm_y && y < mat.getRows(); ++y) {
-        for (int x = left_x; x <= right_x && x < mat.getCols(); ++x) {
-            for (size_t ch = 0; ch < mat.getChannels(); ++ch) {
+
+    // Bounds checking
+    int rows = mat.getRows() - 1;
+    int cols = mat.getCols() - 1;
+
+    int start_y = std::max(0, top_y);
+    int end_y = std::min(rows, bm_y);
+    int start_x = std::max(0, left_x);
+    int end_x = std::min(cols, right_x);
+
+    // Draw rectangle
+    for (int y = start_y; y <= end_y; ++y) {
+        for (int x = start_x; x <= end_x; ++x) {
+            for (size_t ch = 0; ch < std::min(mat.getChannels(), color.size()); ++ch) {
                 mat.at(y, x, ch) = *std::next(color.begin(), ch);
             }
         }

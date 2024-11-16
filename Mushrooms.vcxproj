@@ -133,23 +133,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="src\bw_color.cpp" />
+    <ClCompile Include="src\color.cpp" />
     <ClCompile Include="src\bw_matrix.cpp" />
     <ClCompile Include="src\circle.cpp" />
     <ClCompile Include="src\matrix.cpp" />
     <ClCompile Include="src\rectangle.cpp" />
-    <ClCompile Include="src\rgbcolor.cpp" />
     <ClCompile Include="src\rgb_matrix.cpp" />
     <ClCompile Include="src\triangle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="include\bw_color.h" />
+    <ClInclude Include="include\color.h" />
     <ClInclude Include="include\bw_matrix.h" />
     <ClInclude Include="include\circle.h" />
     <ClInclude Include="include\matrix.h" />
     <ClInclude Include="include\rectangle.h" />
-    <ClInclude Include="include\rgbcolor.h" />
     <ClInclude Include="include\rgb_matrix.h" />
+    <ClInclude Include="include\shape.h" />
     <ClInclude Include="include\triangle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

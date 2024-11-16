@@ -14,14 +14,14 @@ Circle::Circle(Circle& obj)
     , color(obj.color)
 {}
 
-Circle::Circle(std::list<int>center, int rad, BWColor c) 
+Circle::Circle(std::vector<int>center, int rad, BWColor c) 
     : centerX(*center.begin())
     , centerY(center.back())
     , r(rad)
     , color(c.getColor())
 {}
 
-Circle::Circle(std::list<int>center, int rad, RGBColor c)
+Circle::Circle(std::vector<int>center, int rad, RGBColor c)
     : centerX(*center.begin())
     , centerY(center.back())
     , r(rad)
